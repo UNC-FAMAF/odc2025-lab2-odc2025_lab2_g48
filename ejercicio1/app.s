@@ -16,9 +16,23 @@ main:
 	movz x10, 0xC7, lsl 16
 	movk x10, 0x1585, lsl 00
 
+	movz x11, 0x33, lsl 16
+	movk x11, 0xFD00, lsl 00
+
 	mov x2, SCREEN_HEIGH         // Y Size
 loop1:
 	mov x1, SCREEN_WIDTH         // X Size
+
+pintar_pixel:
+	mov x4, #0
+    add x4, x4, 1280 // x4= pixel nro
+    lsl x4, x4, 2 // x4 = pixelnro x 4
+    add x0, x0, x4 // x0 = direccion base + direccion pixel nro
+    stur w11, [x0] // pinto pixel
+	add x0, x0, 4 
+	stur w11, [x0]
+
+
 loop0:
 	stur w10,[x0]  // Colorear el pixel N
 	add x0,x0,4	   // Siguiente pixel
@@ -48,6 +62,7 @@ loop0:
 
 	//---------------------------------------------------------------
 	// Infinite Loop
+
 
 InfLoop:
 	b InfLoop
