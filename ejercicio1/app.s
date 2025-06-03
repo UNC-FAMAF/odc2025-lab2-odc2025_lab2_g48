@@ -56,10 +56,10 @@ movz x10, 0x59, lsl 16
 movk x10, 0x9DE9, lsl 0 
 
 mov x0, x20
-movz x4, 0x2, lsl 16
+movz x4, 0x2, lsl 16 // numero de pixel
 movk x4, 0xF0A8, lsl 0
-lsl x4, x4, 2 
-add x0, x0, x4
+lsl x4, x4, 2 // direccion de la memoria del pixel
+add x0, x0, x4 // base + pixel 
 
 loop3:
 	mov x1, 100
@@ -70,12 +70,89 @@ movimiento_agua:
 	sub x1, x1, 1
 	cbnz x1, movimiento_agua
 	sub x2, x2, 1
-	sub x0, x0, 400 // le resto a la direccion lo que avanze en X
+	sub x0, x0, 380 // le resto a la direccion lo que avanze en X
 	add x0, x0, 2560 // le sumo 2560 osea 640 x 4, para pasar a la linea siguiente en el mismo punto X
 	cbnz x2, loop3
-	add x0, x0, 1200
 
+mov x2, 22
+
+movz x10, 0xFF, lsl 16  
+movk x10, 0xFFFF, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0x9DF0, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x3, 129
+
+loop4:
+	mov x1, x3
+	 
+base_barco:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, base_barco
+
+	sub x2, x2, 1 //contador Y
+	lsl x1, x3, 2 // cantidad que pinte, en memoria
+
+	sub x0, x0, x1 // nueva direccion 
+	add x0, x0, 2560 //paso linea
+	add x0, x0, 4 
 	
+	sub x3, x3, 2 //cantidad de pixeles que voy a pintar en la proxima 129 - 2n
+	cbnz x2, loop4
+
+
+
+mov x2, 34
+
+movz x10, 0xF4, lsl 16 
+movk x10, 0x4336, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0x6E8F, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x3, 68
+
+loop5:
+	mov x1, x3
+	 
+vela_barco:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, vela_barco
+	sub x2, x2, 1 //contador Y
+
+	lsl x1, x3, 2 // cantidad que pinte, en memoria
+	sub x0, x0, x1 // nueva direccion 
+	sub x0, x0, 2560 //paso linea
+	add x0, x0, 4 
+	sub x3, x3, 2 //cantidad de pixeles que voy a pintar en la proxima 129 - 2n
+
+	cbnz x2, loop5
+
+
+movz x10
+movk x10
+
+mov x0, x20
+movz x4, 0 , lsl 16 
+movk x4,, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+
+
+
+
 
 
 

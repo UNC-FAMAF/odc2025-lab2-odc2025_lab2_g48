@@ -16451,7 +16451,7 @@ Disassembly of section .text:
 	...
    900a0:	00080000 	.inst	0x00080000 ; undefined
    900a4:	00000000 	udf	#0
-   900a8:	00110190 	.inst	0x00110190 ; undefined
+   900a8:	00110240 	.inst	0x00110240 ; undefined
    900ac:	00000000 	udf	#0
    900b0:	00090008 	.inst	0x00090008 ; undefined
    900b4:	00000000 	udf	#0
@@ -16513,30 +16513,79 @@ Disassembly of section .text:
    9015c:	d1000421 	sub	x1, x1, #0x1
    90160:	b5ffffa1 	cbnz	x1, 90154 <movimiento_agua>
    90164:	d1000442 	sub	x2, x2, #0x1
-   90168:	d1064000 	sub	x0, x0, #0x190
+   90168:	d105f000 	sub	x0, x0, #0x17c
    9016c:	91280000 	add	x0, x0, #0xa00
    90170:	b5ffff02 	cbnz	x2, 90150 <loop3>
-   90174:	9112c000 	add	x0, x0, #0x4b0
-   90178:	d2a7e409 	mov	x9, #0x3f200000            	// #1059061760
-   9017c:	b900013f 	str	wzr, [x9]
-   90180:	b940352a 	ldr	w10, [x9, #52]
-   90184:	121f014b 	and	w11, w10, #0x2
-   90188:	53017d6b 	lsr	w11, w11, #1
+   90174:	d28002c2 	mov	x2, #0x16                  	// #22
+   90178:	d2a01fea 	mov	x10, #0xff0000              	// #16711680
+   9017c:	f29fffea 	movk	x10, #0xffff
+   90180:	aa1403e0 	mov	x0, x20
+   90184:	d2a00064 	mov	x4, #0x30000               	// #196608
+   90188:	f293be04 	movk	x4, #0x9df0
+   9018c:	d37ef484 	lsl	x4, x4, #2
+   90190:	8b040000 	add	x0, x0, x4
+   90194:	d2801023 	mov	x3, #0x81                  	// #129
 
-000000000009018c <InfLoop>:
-   9018c:	14000000 	b	9018c <InfLoop>
+0000000000090198 <loop4>:
+   90198:	aa0303e1 	mov	x1, x3
+
+000000000009019c <base_barco>:
+   9019c:	b800000a 	stur	w10, [x0]
+   901a0:	91001000 	add	x0, x0, #0x4
+   901a4:	d1000421 	sub	x1, x1, #0x1
+   901a8:	b5ffffa1 	cbnz	x1, 9019c <base_barco>
+   901ac:	d1000442 	sub	x2, x2, #0x1
+   901b0:	d37ef461 	lsl	x1, x3, #2
+   901b4:	cb010000 	sub	x0, x0, x1
+   901b8:	91280000 	add	x0, x0, #0xa00
+   901bc:	91001000 	add	x0, x0, #0x4
+   901c0:	d1000863 	sub	x3, x3, #0x2
+   901c4:	b5fffea2 	cbnz	x2, 90198 <loop4>
+   901c8:	d2800442 	mov	x2, #0x22                  	// #34
+   901cc:	d2a01e8a 	mov	x10, #0xf40000              	// #15990784
+   901d0:	f28866ca 	movk	x10, #0x4336
+   901d4:	aa1403e0 	mov	x0, x20
+   901d8:	d2a00064 	mov	x4, #0x30000               	// #196608
+   901dc:	f28dd1e4 	movk	x4, #0x6e8f
+   901e0:	d37ef484 	lsl	x4, x4, #2
+   901e4:	8b040000 	add	x0, x0, x4
+   901e8:	d2800883 	mov	x3, #0x44                  	// #68
+
+00000000000901ec <loop5>:
+   901ec:	aa0303e1 	mov	x1, x3
+
+00000000000901f0 <vela_barco>:
+   901f0:	b800000a 	stur	w10, [x0]
+   901f4:	91001000 	add	x0, x0, #0x4
+   901f8:	d1000421 	sub	x1, x1, #0x1
+   901fc:	b5ffffa1 	cbnz	x1, 901f0 <vela_barco>
+   90200:	d1000442 	sub	x2, x2, #0x1
+   90204:	d37ef461 	lsl	x1, x3, #2
+   90208:	cb010000 	sub	x0, x0, x1
+   9020c:	d1280000 	sub	x0, x0, #0xa00
+   90210:	91001000 	add	x0, x0, #0x4
+   90214:	d1000863 	sub	x3, x3, #0x2
+   90218:	b5fffea2 	cbnz	x2, 901ec <loop5>
+   9021c:	d2a7e409 	mov	x9, #0x3f200000            	// #1059061760
+   90220:	b900013f 	str	wzr, [x9]
+   90224:	b940352a 	ldr	w10, [x9, #52]
+   90228:	121f014b 	and	w11, w10, #0x2
+   9022c:	53017d6b 	lsr	w11, w11, #1
+
+0000000000090230 <InfLoop>:
+   90230:	14000000 	b	90230 <InfLoop>
 	...
 
 Disassembly of section .debug_line:
 
 0000000000000000 <.debug_line>:
-   0:	00000063 	udf	#99
+   0:	0000008e 	udf	#142
    4:	00190002 	.inst	0x00190002 ; undefined
    8:	01040000 	.inst	0x01040000 ; undefined
    c:	000a0efb 	.inst	0x000a0efb ; undefined
   10:	01010101 	.inst	0x01010101 ; undefined
   14:	01000000 	.inst	0x01000000 ; undefined
-  18:	70706100 	adr	x0, e0c3b <InfLoop+0x50aaf>
+  18:	70706100 	adr	x0, e0c3b <InfLoop+0x50a0b>
   1c:	0000732e 	udf	#29486
   20:	00000000 	udf	#0
   24:	00c80209 	.inst	0x00c80209 ; undefined
@@ -16552,30 +16601,41 @@ Disassembly of section .debug_line:
   4c:	1e1e1f1e 	.inst	0x1e1e1f1e ; undefined
   50:	20201e1e 	.inst	0x20201e1e ; undefined
   54:	1e1e1e1e 	.inst	0x1e1e1e1e ; undefined
-  58:	1e1e1e1e 	.inst	0x1e1e1e1e ; undefined
-  5c:	20202325 	.inst	0x20202325 ; undefined
-  60:	01022421 	.inst	0x01022421 ; undefined
-  64:	4c010100 	.inst	0x4c010100 ; undefined
-  68:	02000000 	.inst	0x02000000 ; undefined
-  6c:	00001b00 	udf	#6912
-  70:	fb010400 	.inst	0xfb010400 ; undefined
-  74:	01000a0e 	.inst	0x01000a0e ; undefined
-  78:	00010101 	.inst	0x00010101 ; undefined
-  7c:	00010000 	.inst	0x00010000 ; undefined
-  80:	72617473 	.inst	0x72617473 ; undefined
-  84:	00732e74 	.inst	0x00732e74 ; undefined
-  88:	00000000 	udf	#0
-  8c:	00020900 	.inst	0x00020900 ; undefined
-  90:	00000800 	udf	#2048
-  94:	03000000 	.inst	0x03000000 ; undefined
-  98:	1e1e0130 	.inst	0x1e1e0130 ; undefined
-  9c:	201e2120 	.inst	0x201e2120 ; undefined
-  a0:	1e1e1f1e 	.inst	0x1e1e1f1e ; undefined
-  a4:	1e1e211e 	.inst	0x1e1e211e ; undefined
-  a8:	1e1e1e1e 	.inst	0x1e1e1e1e ; undefined
-  ac:	1e1e1e1e 	.inst	0x1e1e1e1e ; undefined
-  b0:	01809c02 	.inst	0x01809c02 ; undefined
-  b4:	Address 0xb4 is out of bounds.
+  58:	1f1e1e1e 	fmadd	s30, s16, s30, s7
+  5c:	1e1f1e1f 	.inst	0x1e1f1e1f ; undefined
+  60:	1f1e1e1e 	fmadd	s30, s16, s30, s7
+  64:	1e1e2020 	.inst	0x1e1e2020 ; undefined
+  68:	1e1e1f1e 	.inst	0x1e1e1f1e ; undefined
+  6c:	1e1e1e1e 	.inst	0x1e1e1e1e ; undefined
+  70:	1f1e1f21 	fmadd	s1, s25, s30, s7
+  74:	1e1e1e1e 	.inst	0x1e1e1e1e ; undefined
+  78:	1e20201f 	.inst	0x1e20201f ; undefined
+  7c:	1f1e1e1e 	fmadd	s30, s16, s30, s7
+  80:	1e1e1e1e 	.inst	0x1e1e1e1e ; undefined
+  84:	1d0d031f 	.inst	0x1d0d031f ; undefined
+  88:	21202023 	.inst	0x21202023 ; undefined
+  8c:	00010224 	.inst	0x00010224 ; undefined
+  90:	004c0101 	.inst	0x004c0101 ; undefined
+  94:	00020000 	.inst	0x00020000 ; undefined
+  98:	0000001b 	udf	#27
+  9c:	0efb0104 	.inst	0x0efb0104 ; undefined
+  a0:	0101000a 	.inst	0x0101000a ; undefined
+  a4:	00000101 	udf	#257
+  a8:	73000100 	.inst	0x73000100 ; undefined
+  ac:	74726174 	.inst	0x74726174 ; undefined
+  b0:	0000732e 	udf	#29486
+  b4:	00000000 	udf	#0
+  b8:	00000209 	udf	#521
+  bc:	00000008 	udf	#8
+  c0:	30030000 	adr	x0, 60c1 <MMIO_BASE_ALTA+0x21a1>
+  c4:	201e1e01 	.inst	0x201e1e01 ; undefined
+  c8:	1e201e21 	fcsel	s1, s17, s0, ne	// ne = any
+  cc:	1e1e1e1f 	.inst	0x1e1e1e1f ; undefined
+  d0:	1e1e1e21 	.inst	0x1e1e1e21 ; undefined
+  d4:	1e1e1e1e 	.inst	0x1e1e1e1e ; undefined
+  d8:	021e1e1e 	.inst	0x021e1e1e ; undefined
+  dc:	0001809c 	.inst	0x0001809c ; undefined
+  e0:	Address 0xe0 is out of bounds.
 
 
 Disassembly of section .debug_info:
@@ -16587,14 +16647,14 @@ Disassembly of section .debug_info:
    c:	00000000 	udf	#0
   10:	000900c8 	.inst	0x000900c8 ; undefined
   14:	00000000 	udf	#0
-  18:	00090190 	.inst	0x00090190 ; undefined
+  18:	00090234 	.inst	0x00090234 ; undefined
 	...
   24:	00000006 	udf	#6
   28:	0000005d 	udf	#93
   2c:	002a8001 	.inst	0x002a8001 ; NYI
   30:	00020000 	.inst	0x00020000 ; undefined
   34:	00000014 	udf	#20
-  38:	00670108 	.inst	0x00670108 ; undefined
+  38:	00920108 	.inst	0x00920108 ; undefined
   3c:	00000000 	udf	#0
   40:	00000008 	udf	#8
   44:	00c80000 	.inst	0x00c80000 ; undefined
@@ -16627,7 +16687,7 @@ Disassembly of section .debug_aranges:
    c:	00000000 	udf	#0
   10:	000900c8 	.inst	0x000900c8 ; undefined
   14:	00000000 	udf	#0
-  18:	000000c8 	udf	#200
+  18:	0000016c 	udf	#364
 	...
   30:	0000002c 	udf	#44
   34:	002e0002 	.inst	0x002e0002 ; NYI
@@ -16660,7 +16720,7 @@ Disassembly of section .debug_str:
   40:	63646f2d 	.inst	0x63646f2d ; undefined
   44:	35323032 	cbnz	w18, 64648 <Set_Palette+0x1c63d>
   48:	62616c5f 	.inst	0x62616c5f ; undefined
-  4c:	34675f32 	cbz	w18, cec30 <InfLoop+0x3eaa4>
+  4c:	34675f32 	cbz	w18, cec30 <InfLoop+0x3ea00>
   50:	6a652f38 	bics	w24, w25, w5, lsr #11
   54:	69637265 	ldpsw	x5, x28, [x19, #-232]
   58:	316f6963 	adds	w3, w11, #0xbda, lsl #12
