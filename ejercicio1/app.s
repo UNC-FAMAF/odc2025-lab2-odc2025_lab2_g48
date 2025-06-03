@@ -97,14 +97,13 @@ movimiento_agua2:
 	add x0, x0, 2560
 	cbnz x2, loop4
 
-// Tercera onda
 mov x2, 8
 movz x10, 0x59, lsl 16
 movk x10, 0x9DE9, lsl 0
 
 mov x0, x20
 movz x4, 0x3, lsl 16
-movk x4, 0xEFB9, lsl 0  // <-- diferente posición
+movk x4, 0xEFB9, lsl 0
 lsl x4, x4, 2
 add x0, x0, x4
 
