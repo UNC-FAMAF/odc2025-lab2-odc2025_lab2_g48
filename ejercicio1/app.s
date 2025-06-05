@@ -29,7 +29,7 @@ cielo:
 	cbnz x2,loop1  // Si no es la última fila, salto
 
 
-mov x2, 200 // contador
+mov x2, 201 // contador
 movz x10, 0x14, lsl 16 //color
 movk x10, 0x1D9A, lsl 00 //color
 
@@ -97,7 +97,7 @@ movimiento_agua2:
 	add x0, x0, 2560
 	cbnz x2, loop4
 
-mov x2, 8
+mov x2, 4
 movz x10, 0x59, lsl 16
 movk x10, 0x9DE9, lsl 0
 
@@ -189,17 +189,54 @@ vela_barco:
 	cbnz x2, loop7
 
 
+// Playa
 
+// Color
+movz x10, 0xFF, lsl 16 
+movk x10, 0x9800, lsl 0
+
+//Direccion inicial
 mov x0, x20
-movz x4, 0 , lsl 16 
-movk x4, 0 , lsl 0
+movz x4, 0x2, lsl 16
+movk x4, 0xB894, lsl 0
 lsl x4, x4, 2
 add x0, x0, x4
 
+mov x2, 10                 // contador x
+mov x3, 100                // contador y
 
+mov x6, 2                  // contador lineas
+mov x7, 2                  // cantidad
 
+loop8:
+	mov x1, x3
 
+playa_isla:                // es el procedimiento que dibuja la isla
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, playa_isla
 
+	sub x2, x2, 1
+	lsl x1, x3, 2
+	sub x0, x0, x1         // nueva direccion
+	sub x0, x0, 2560       // paso a la linea de arriba
+	lsr x8, x7, 1          // x8 = x7 / 2 (mitad de la reducción)
+	lsl x8, x8, 2          // Convertir a bytes (offset)
+	add x0, x0, x8         // Desplaza el inicio solo la mitad
+
+	sub x6, x6, 1
+	cmp x6, 0
+	b.ne skip
+	add x7, x7, 2
+	mov x6, 2
+
+	// cuando el contador llegue a 0, añade 2 al registro x7 y resetea el valor del contador. Si no, salta directamente a la linea de skip.
+
+	skip:
+	sub x3, x3, x7         // cantidad de pixeles que voy a pintar en la proxima por derecha
+
+	cbnz x2, loop8
 
 
 
