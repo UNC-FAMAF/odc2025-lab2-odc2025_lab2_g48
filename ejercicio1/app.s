@@ -13,6 +13,10 @@ main:
  	mov x20, x0	// Guarda la dirección base del framebuffer en x20
 	//---------------- CODE HERE ------------------------------------
 
+//--------------------------------------
+// Cielo
+//--------------------------------------
+
 	movz x10, 0x0F, lsl 16
 	movk x10, 0xC4C4, lsl 00
 
@@ -28,10 +32,264 @@ cielo:
 	sub x2,x2,1	   // Decrementar contador Y
 	cbnz x2,loop1  // Si no es la última fila, salto
 
+//--------------------------------------
+// Hojas de la palmera
+//--------------------------------------
+
+bl draw_hoja_palmera_1                                                                 // Llama al procedimiento que dibuja el coco
+
+draw_hoja_palmera_1:
+    // Se guardan registros importantes
+    sub sp, sp, #64
+    stur x0, [sp, #0]
+    stur x1, [sp, #8]
+    stur x2, [sp, #16]
+    stur x10, [sp, #24]
+    stur x21, [sp, #40]
+    stur x22, [sp, #48]
+    stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
+
+    // Se configuran los parámetros del sol
+    mov x19, x20                                                            // Base del framebuffer
+    movz x10, 0x1B, lsl 16
+    movk x10, 0x5E20, lsl 00
+    mov x23, x10
+
+    mov x15, #487                                                           // Coordenada X del centro
+    mov x21, #207                                                            // Coordenada Y del centro
+    mov x22, #34                                                            // Radio
+
+    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+
+    // Ahora se restauran los registros
+    ldur x30, [sp, #56]
+    ldur x22, [sp, #48]
+    ldur x21, [sp, #40]
+    ldur x10, [sp, #24]
+    ldur x2, [sp, #16]
+    ldur x1, [sp, #8]
+    ldur x0, [sp, #0]
+    add sp, sp, #64
 
 
+bl draw_correccion_cielo_1                                                                 // Llama al procedimiento que dibuja el coco
 
+draw_correccion_cielo_1:
+    // Se guardan registros importantes
+    sub sp, sp, #64
+    stur x0, [sp, #0]
+    stur x1, [sp, #8]
+    stur x2, [sp, #16]
+    stur x10, [sp, #24]
+    stur x21, [sp, #40]
+    stur x22, [sp, #48]
+    stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
+
+    // Se configuran los parámetros del sol
+    mov x19, x20                                                            // Base del framebuffer
+    movz x10, 0x0F, lsl 16
+    movk x10, 0xC4C4, lsl 00
+    mov x23, x10
+
+    mov x15, #490                                                           // Coordenada X del centro
+    mov x21, #238                                                            // Coordenada Y del centro
+    mov x22, #58                                                            // Radio
+
+    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+
+    // Ahora se restauran los registros
+    ldur x30, [sp, #56]
+    ldur x22, [sp, #48]
+    ldur x21, [sp, #40]
+    ldur x10, [sp, #24]
+    ldur x2, [sp, #16]
+    ldur x1, [sp, #8]
+    ldur x0, [sp, #0]
+    add sp, sp, #64
+
+
+bl draw_hoja_palmera_2                                                                 // Llama al procedimiento que dibuja el coco
+
+draw_hoja_palmera_2:
+    // Se guardan registros importantes
+    sub sp, sp, #64
+    stur x0, [sp, #0]
+    stur x1, [sp, #8]
+    stur x2, [sp, #16]
+    stur x10, [sp, #24]
+    stur x21, [sp, #40]
+    stur x22, [sp, #48]
+    stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
+
+    // Se configuran los parámetros del sol
+    mov x19, x20                                                            // Base del framebuffer
+    movz x10, 0x1B, lsl 16
+    movk x10, 0x5E20, lsl 00
+    mov x23, x10
+
+    mov x15, #431                                                           // Coordenada X del centro
+    mov x21, #201                                                            // Coordenada Y del centro
+    mov x22, #29                                                            // Radio
+
+    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+
+    // Ahora se restauran los registros
+    ldur x30, [sp, #56]
+    ldur x22, [sp, #48]
+    ldur x21, [sp, #40]
+    ldur x10, [sp, #24]
+    ldur x2, [sp, #16]
+    ldur x1, [sp, #8]
+    ldur x0, [sp, #0]
+    add sp, sp, #64
+
+
+bl draw_correccion_cielo_2                                                                 // Llama al procedimiento que dibuja el coco
+
+draw_correccion_cielo_2:
+    // Se guardan registros importantes
+    sub sp, sp, #64
+    stur x0, [sp, #0]
+    stur x1, [sp, #8]
+    stur x2, [sp, #16]
+    stur x10, [sp, #24]
+    stur x21, [sp, #40]
+    stur x22, [sp, #48]
+    stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
+
+    // Se configuran los parámetros del sol
+    mov x19, x20                                                            // Base del framebuffer
+    movz x10, 0x0F, lsl 16
+    movk x10, 0xC4C4, lsl 00
+    mov x23, x10
+
+    mov x15, #429                                                           // Coordenada X del centro
+    mov x21, #224                                                            // Coordenada Y del centro
+    mov x22, #44                                                            // Radio
+
+    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+
+    // Ahora se restauran los registros
+    ldur x30, [sp, #56]
+    ldur x22, [sp, #48]
+    ldur x21, [sp, #40]
+    ldur x10, [sp, #24]
+    ldur x2, [sp, #16]
+    ldur x1, [sp, #8]
+    ldur x0, [sp, #0]
+    add sp, sp, #64
+
+
+bl draw_hoja_palmera_3                                                                 // Llama al procedimiento que dibuja el coco
+
+draw_hoja_palmera_3:
+    // Se guardan registros importantes
+    sub sp, sp, #64
+    stur x0, [sp, #0]
+    stur x1, [sp, #8]
+    stur x2, [sp, #16]
+    stur x10, [sp, #24]
+    stur x21, [sp, #40]
+    stur x22, [sp, #48]
+    stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
+
+    // Se configuran los parámetros del sol
+    mov x19, x20                                                            // Base del framebuffer
+    movz x10, 0x1B, lsl 16
+    movk x10, 0x5E20, lsl 00
+    mov x23, x10
+
+    mov x15, #443                                                           // Coordenada X del centro
+    mov x21, #209                                                            // Coordenada Y del centro
+    mov x22, #27                                                            // Radio
+
+    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+
+    // Ahora se restauran los registros
+    ldur x30, [sp, #56]
+    ldur x22, [sp, #48]
+    ldur x21, [sp, #40]
+    ldur x10, [sp, #24]
+    ldur x2, [sp, #16]
+    ldur x1, [sp, #8]
+    ldur x0, [sp, #0]
+    add sp, sp, #64
+
+bl draw_hoja_palmera_4                                                                 // Llama al procedimiento que dibuja el coco
+
+draw_hoja_palmera_4:
+    // Se guardan registros importantes
+    sub sp, sp, #64
+    stur x0, [sp, #0]
+    stur x1, [sp, #8]
+    stur x2, [sp, #16]
+    stur x10, [sp, #24]
+    stur x21, [sp, #40]
+    stur x22, [sp, #48]
+    stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
+
+    // Se configuran los parámetros del sol
+    mov x19, x20                                                            // Base del framebuffer
+    movz x10, 0x1B, lsl 16
+    movk x10, 0x5E20, lsl 00
+    mov x23, x10
+
+    mov x15, #474                                                           // Coordenada X del centro
+    mov x21, #209                                                            // Coordenada Y del centro
+    mov x22, #26                                                           // Radio
+
+    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+
+    // Ahora se restauran los registros
+    ldur x30, [sp, #56]
+    ldur x22, [sp, #48]
+    ldur x21, [sp, #40]
+    ldur x10, [sp, #24]
+    ldur x2, [sp, #16]
+    ldur x1, [sp, #8]
+    ldur x0, [sp, #0]
+    add sp, sp, #64
+
+
+bl draw_correccion_cielo_3                                                                 // Llama al procedimiento que dibuja el coco
+
+draw_correccion_cielo_3:
+    // Se guardan registros importantes
+    sub sp, sp, #64
+    stur x0, [sp, #0]
+    stur x1, [sp, #8]
+    stur x2, [sp, #16]
+    stur x10, [sp, #24]
+    stur x21, [sp, #40]
+    stur x22, [sp, #48]
+    stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
+
+    // Se configuran los parámetros del sol
+    mov x19, x20                                                            // Base del framebuffer
+    movz x10, 0x0F, lsl 16
+    movk x10, 0xC4C4, lsl 00
+    mov x23, x10
+
+    mov x15, #458                                                           // Coordenada X del centro
+    mov x21, #231                                                            // Coordenada Y del centro
+    mov x22, #42                                                            // Radio
+
+    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+
+    // Ahora se restauran los registros
+    ldur x30, [sp, #56]
+    ldur x22, [sp, #48]
+    ldur x21, [sp, #40]
+    ldur x10, [sp, #24]
+    ldur x2, [sp, #16]
+    ldur x1, [sp, #8]
+    ldur x0, [sp, #0]
+    add sp, sp, #64
+
+
+//--------------------------------------
 // Mar
+//--------------------------------------
 
 mov x2, 201 // contador
 movz x10, 0x14, lsl 16 //color
@@ -47,18 +305,19 @@ loop2:
     mov x1, SCREEN_WIDTH 
 
 agua:
-    stur w10, [x0] // pinta x0, primer pixel
-	add x0, x0, 4 // siguiente pixel
-    sub x1, x1, 1 // restamos contador X pixel
-    cbnz x1, agua // si no termino, salto a agua
-    sub x2, x2, 1 // restamos contador Y filas
-    cbnz x2, loop2 // si no termino, salto a loop2
+    stur w10, [x0]                               // pinta x0, primer pixel
+	add x0, x0, 4                                // siguiente pixel
+    sub x1, x1, 1                                // restamos contador X pixel
+    cbnz x1, agua                                // si no termino, salto a agua
+    sub x2, x2, 1                                // restamos contador Y filas
+    cbnz x2, loop2                               // si no termino, salto a loop2
 
 
-
+//--------------------------------------
 // Oleaje
+//--------------------------------------
 
-mov x2, 4
+mov x2, 6
 movz x10, 0x59, lsl 16
 movk x10, 0x9DE9, lsl 0 
 
@@ -69,17 +328,17 @@ lsl x4, x4, 2 // direccion de la memoria del pixel
 add x0, x0, x4 // base + pixel 
 
 loop3:
-	mov x1, 100
+    mov x1, 100
 
 movimiento_agua:
-	stur w10, [x0]
-	add x0, x0, 4
-	sub x1, x1, 1
-	cbnz x1, movimiento_agua
-	sub x2, x2, 1
-	sub x0, x0, 380 // le resto a la direccion lo que avanze en X
-	add x0, x0, 2560 // le sumo 2560 osea 640 x 4, para pasar a la linea siguiente en el mismo punto X
-	cbnz x2, loop3
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, movimiento_agua
+    sub x2, x2, 1
+    sub x0, x0, 380                              // le resto a la direccion lo que avanze en X
+    add x0, x0, 2560                             // le sumo 2560 osea 640 x 4, para pasar a la linea siguiente en el mismo punto X
+    cbnz x2, loop3
 
 mov x2, 4
 movz x10, 0x59, lsl 16
@@ -92,17 +351,17 @@ lsl x4, x4, 2
 add x0, x0, x4
 
 loop4:
-	mov x1, 100
+    mov x1, 100
 
 movimiento_agua2:
-	stur w10, [x0]
-	add x0, x0, 4
-	sub x1, x1, 1
-	cbnz x1, movimiento_agua2
-	sub x2, x2, 1
-	sub x0, x0, 380
-	add x0, x0, 2560
-	cbnz x2, loop4
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, movimiento_agua2
+    sub x2, x2, 1
+    sub x0, x0, 380
+    add x0, x0, 2560
+    cbnz x2, loop4
 
 mov x2, 4
 movz x10, 0x59, lsl 16
@@ -115,21 +374,72 @@ lsl x4, x4, 2
 add x0, x0, x4
 
 loop5:
-	mov x1, 100
+    mov x1, 100
 
 movimiento_agua3:
-	stur w10, [x0]
-	add x0, x0, 4
-	sub x1, x1, 1
-	cbnz x1, movimiento_agua3
-	sub x2, x2, 1
-	sub x0, x0, 380
-	add x0, x0, 2560
-	cbnz x2, loop5
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, movimiento_agua3
+    sub x2, x2, 1
+    sub x0, x0, 380
+    add x0, x0, 2560
+    cbnz x2, loop5
 
 
 
+mov x2, 6
+movz x10, 0x59, lsl 16
+movk x10, 0x9DE9, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xBF51, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+loop5_1:
+    mov x1, 100
+
+movimiento_agua4:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, movimiento_agua4
+    sub x2, x2, 1
+    sub x0, x0, 380
+    add x0, x0, 2560
+    cbnz x2, loop5_1
+
+
+
+mov x2, 3
+movz x10, 0x59, lsl 16
+movk x10, 0x9DE9, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xFCFA, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+loop5_2:
+    mov x1, 100
+
+movimiento_agua5:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, movimiento_agua5
+    sub x2, x2, 1
+    sub x0, x0, 380
+    add x0, x0, 2560
+    cbnz x2, loop5_2
+
+
+//--------------------------------------
 // Base del barco
+//--------------------------------------
 
 mov x2, 22
 
@@ -153,19 +463,535 @@ base_barco:
 	sub x1, x1, 1
 	cbnz x1, base_barco
 
-	sub x2, x2, 1 //contador Y
-	lsl x1, x3, 2 // cantidad que pinte, en memoria
+	sub x2, x2, 1                                                                      //contador Y
+	lsl x1, x3, 2                                                                      // cantidad que pinte, en memoria
 
-	sub x0, x0, x1 // nueva direccion 
-	add x0, x0, 2560 //paso linea
+	sub x0, x0, x1 																	   // nueva direccion 
+	add x0, x0, 2560                                                                   //paso linea
 	add x0, x0, 4 
 	
-	sub x3, x3, 2 //cantidad de pixeles que voy a pintar en la proxima 129 - 2n
+	sub x3, x3, 2                                                                      //cantidad de pixeles que voy a pintar en la proxima 129 - 2n
 	cbnz x2, loop6
 
+// Inscripcion ODC 2025
+
+// Letra O
+
+movz x10, 0x00, lsl 16  
+movk x10, 0x0000, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xA80D, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 12                                                                         	   // Contador y
+mov x3, 8                   														   // Contador x
+
+loop_o1:
+	mov x1, x3
+	 
+letra_o1:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, letra_o1
+
+	sub x2, x2, 1                           										   // contador Y
+	lsl x1, x3, 2                         											   // cantidad que pinte, en memoria
+
+	sub x0, x0, x1                       											   // nueva direccion 
+	add x0, x0, 2560                    											   //paso linea
+
+	cbnz x2, loop_o1
 
 
+
+movz x10, 0xFF, lsl 16  
+movk x10, 0xFFFF, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xAD0F, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 8                     														   // Contador y
+mov x3, 4                     														   // Contador x
+
+loop_o2:
+	mov x1, x3
+	 
+letra_o2:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, letra_o2
+
+	sub x2, x2, 1                        											   // contador Y
+	lsl x1, x3, 2                        											   // cantidad que pinte, en memoria
+
+	sub x0, x0, x1                       											   // nueva direccion 
+	add x0, x0, 2560                     											   //  paso linea
+
+	cbnz x2, loop_o2
+
+
+// Letra D
+
+
+movz x10, 0x00, lsl 16  
+movk x10, 0x0000, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xA818, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 12                     														   // Contador y
+mov x3, 8                     														   // Contador x
+
+loop_d1:
+	mov x1, x3
+	 
+letra_d1:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, letra_d1
+
+	sub x2, x2, 1                          	 										   // contador Y
+	lsl x1, x3, 2                         											   // cantidad que pinte, en memoria
+
+	sub x0, x0, x1                      	 										   // nueva direccion 
+	add x0, x0, 2560                    											   //paso linea
+
+	cbnz x2, loop_d1
+
+
+
+movz x10, 0xFF, lsl 16  
+movk x10, 0xFFFF, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xAD1A, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 8                     														   // Contador y
+mov x3, 4                     														   // Contador x
+
+loop_d2:
+	mov x1, x3
+	 
+letra_d2:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, letra_d2
+
+	sub x2, x2, 1                        											   // contador Y
+	lsl x1, x3, 2                        											   // cantidad que pinte, en memoria
+
+	sub x0, x0, x1                      	 										   // nueva direccion 
+	add x0, x0, 2560                     											   //  paso linea
+
+	cbnz x2, loop_d2
+
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xA81E, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 2                     														   // Contador y
+mov x3, 2                     														   // Contador x
+
+loop_d3:
+	mov x1, x3
+	 
+letra_d3:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, letra_d3
+
+	sub x2, x2, 1                        											   // contador Y
+	lsl x1, x3, 2                        											   // cantidad que pinte, en memoria
+
+	sub x0, x0, x1                       											   // nueva direccion 
+	add x0, x0, 2560                     											   //  paso linea
+
+	cbnz x2, loop_d3
+
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xC11E, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 2                     														   // Contador y
+mov x3, 2                     														   // Contador x
+
+loop_d4:
+	mov x1, x3
+	 
+letra_d4:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, letra_d4
+
+	sub x2, x2, 1                        											   // contador Y
+	lsl x1, x3, 2                        											   // cantidad que pinte, en memoria
+
+	sub x0, x0, x1                       											   // nueva direccion 
+	add x0, x0, 2560                     											   //  paso linea
+
+	cbnz x2, loop_d4
+
+
+// Letra c
+
+movz x10, 0x00, lsl 16
+movk x10, 0x0000, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xA823, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 12                     														   // Contador y
+mov x3, 7                     														   // Contador x
+
+loop_c1:
+    mov x1, x3
+
+letra_c1:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, letra_c1
+
+    sub x2, x2, 1                           										   // contador Y
+    lsl x1, x3, 2                         											   // cantidad que pinte, en memoria
+
+    sub x0, x0, x1                       											   // nueva direccion 
+    add x0, x0, 2560                    											   //paso linea
+
+    cbnz x2, loop_c1
+
+
+
+movz x10, 0xFF, lsl 16
+movk x10, 0xFFFF, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xAD25, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 8                     														   // Contador y
+mov x3, 3                     														   // Contador x
+
+loop_c2:
+    mov x1, x3
+
+letra_c2:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, letra_c2
+
+    sub x2, x2, 1                        											   // contador Y
+    lsl x1, x3, 2                        											   // cantidad que pinte, en memoria
+
+    sub x0, x0, x1                       											   // nueva direccion 
+    add x0, x0, 2560                     										 	   //  paso linea
+
+    cbnz x2, loop_c2
+
+
+movz x10, 0xFF, lsl 16
+movk x10, 0xFFFF, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xB228, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 4                     														   // Contador y
+mov x3, 2                     														   // Contador x
+
+loop_c3:
+    mov x1, x3
+
+letra_c3:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, letra_c3
+
+    sub x2, x2, 1                        											   // contador Y
+    lsl x1, x3, 2                        											   // cantidad que pinte, en memoria
+
+    sub x0, x0, x1                                                                 	   // nueva direccion 
+    add x0, x0, 2560                     											   //  paso linea
+
+    cbnz x2, loop_c3
+
+
+// 2025
+
+// 2
+
+mov x10, 0
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xA830, lsl 00
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 2
+mov x3, 3
+mov x5, 7680
+
+loop_linea:
+    mov x1, 7 
+
+linea_horizontal:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, linea_horizontal
+    sub x2, x2, 1  																		//contador Y
+    sub x0, x0, 28																		// Nueva direccion 
+    add x0, x0, 2560 																	// Paso de linea
+    cbnz x2, loop_linea
+    add x0, x0, x5
+    mov x2, 2
+    sub x3, x3, 1
+    cbnz x3, loop_linea
+
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xAD35, lsl 00
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 3
+mov x3, 2
+mov x5, 5100
+
+loop_linea1:
+    mov x1, 2
+
+linea_vertical:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, linea_vertical
+    sub x2, x2, 1
+    sub x0, x0, 8
+    add x0, x0, 2560
+    cbnz x2, loop_linea1
+    add x0, x0, x5
+    mov x2, 3
+    sub x3, x3, 1
+    cbnz x3, loop_linea1
+
+
+// 0
+
+movz x10, 0x00, lsl 16  
+movk x10, 0x0000, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xA83A, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 12                     														   // Contador y
+mov x3, 7                     														   // Contador x
+
+loop_0_1:
+	mov x1, x3
+	 
+numero_0_1:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, numero_0_1
+
+	sub x2, x2, 1                           										   // contador Y
+	lsl x1, x3, 2                         											   // cantidad que pinte, en memoria
+
+	sub x0, x0, x1                       											   // nueva direccion 
+	add x0, x0, 2560                    											   // paso linea
+
+	cbnz x2, loop_0_1
+
+movz x10, 0xFF, lsl 16  
+movk x10, 0xFFFF, lsl 0
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xAD3C, lsl 0
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 8                     														   // Contador y
+mov x3, 3                     															// Contador x
+
+loop_0_2:
+	mov x1, x3
+	 
+numero_0_2:
+	stur w10, [x0]
+	add x0, x0, 4
+	sub x1, x1, 1
+	cbnz x1, numero_0_2
+
+	sub x2, x2, 1                        												// contador Y
+	lsl x1, x3, 2                        												// cantidad que pinte, en memoria
+
+	sub x0, x0, x1                       												// nueva direccion 
+	add x0, x0, 2560                     												//  paso linea
+
+	cbnz x2, loop_0_2
+
+// 2
+
+mov x10, 0
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xA844, lsl 00
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 2
+mov x3, 3
+mov x5, 7680
+
+loop_linea2:
+    mov x1, 7 
+
+linea_horizontal1:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, linea_horizontal1
+    sub x2, x2, 1  																		//contador Y
+    sub x0, x0, 28																		// Nueva direccion 
+    add x0, x0, 2560 																	//Paso de linea
+    cbnz x2, loop_linea2
+    add x0, x0, x5
+    mov x2, 2
+    sub x3, x3, 1
+    cbnz x3, loop_linea2
+
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xAD49, lsl 00
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 3
+mov x3, 2
+mov x5, 5100
+
+loop_linea3:
+    mov x1, 2
+
+linea_vertical1:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, linea_vertical1
+    sub x2, x2, 1
+    sub x0, x0, 8
+    add x0, x0, 2560
+    cbnz x2, loop_linea3
+    add x0, x0, x5
+    mov x2, 3
+    sub x3, x3, 1
+    cbnz x3, loop_linea3
+
+
+// 5
+
+
+mov x10, 0
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xA84E, lsl 00
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 2
+mov x3, 3
+mov x5, 7680
+loop_linea4:
+    mov x1, 7 
+
+linea_horizontal2:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, linea_horizontal2
+    sub x2, x2, 1
+    sub x0, x0, 28
+    add x0, x0, 2560
+    cbnz x2, loop_linea4
+    add x0, x0, x5
+    mov x2, 2
+    sub x3, x3, 1
+    cbnz x3, loop_linea4
+
+
+mov x0, x20
+movz x4, 0x3, lsl 16
+movk x4, 0xAD4E, lsl 00
+lsl x4, x4, 2
+add x0, x0, x4
+
+mov x2, 3
+mov x3, 2
+mov x5, 5140
+
+loop_linea5:
+    mov x1, 2
+
+linea_vertical2:
+    stur w10, [x0]
+    add x0, x0, 4
+    sub x1, x1, 1
+    cbnz x1, linea_vertical2
+    sub x2, x2, 1
+    sub x0, x0, 8
+    add x0, x0, 2560
+    cbnz x2, loop_linea5
+    add x0, x0, x5
+    mov x2, 3
+    sub x3, x3, 1
+    cbnz x3, loop_linea5
+
+
+
+//--------------------------------------
 // Vela del barco
+//--------------------------------------
 
 mov x2, 34
 
@@ -188,19 +1014,19 @@ vela_barco:
 	add x0, x0, 4
 	sub x1, x1, 1
 	cbnz x1, vela_barco
-	sub x2, x2, 1 //contador Y
+	sub x2, x2, 1 																		//contador Y
 
-	lsl x1, x3, 2 // cantidad que pinte, en memoria
-	sub x0, x0, x1 // nueva direccion 
-	sub x0, x0, 2560 //paso linea
+	lsl x1, x3, 2 																		// cantidad que pinte, en memoria
+	sub x0, x0, x1 																		// nueva direccion 
+	sub x0, x0, 2560 																	//paso linea
 	add x0, x0, 4 
-	sub x3, x3, 2 //cantidad de pixeles que voy a pintar en la proxima 129 - 2n
+	sub x3, x3, 2 																		//cantidad de pixeles que voy a pintar en la proxima 129 - 2n
 
 	cbnz x2, loop7
 
-
-
+//--------------------------------------
 // Mastil del barco
+//--------------------------------------
 
 mov x2, 51
 movz x10, 0x4c, lsl 16
@@ -220,14 +1046,14 @@ mastil_barco:
     add x0, x0, 4
     sub x1, x1, 1
     cbnz x1, mastil_barco
-    sub x2, x2, 1
-    sub x0, x0, 12
-    add x0, x0, 2560
+    sub x2, x2, 1 																		// contador Y
+    sub x0, x0, 12 																		// Nueva direccion 
+    add x0, x0, 2560  																	//paso linea
     cbnz x2, loop_mastil
 
-
-
+//--------------------------------------
 // Playa
+//--------------------------------------
 
 // Color
 movz x10, 0xFF, lsl 16 
@@ -240,16 +1066,16 @@ movk x4, 0xB894, lsl 0
 lsl x4, x4, 2
 add x0, x0, x4
 
-mov x2, 10                 // contador x
-mov x3, 100                // contador y
+mov x2, 10                 																// contador x
+mov x3, 100                																// contador y
 
-mov x6, 2                  // contador lineas
-mov x7, 2                  // contador de cantidad de pixeles que van a dejarse de dibujar en la siguiente linea
+mov x6, 2                  																// contador lineas
+mov x7, 2                  																// contador de cantidad de pixeles que van a dejarse de dibujar en la siguiente linea
 
 loop8:
 	mov x1, x3
 
-playa_isla:                // es el procedimiento que dibuja la isla
+playa_isla:                																// es el procedimiento que dibuja la isla
 	stur w10, [x0]
 	add x0, x0, 4
 	sub x1, x1, 1
@@ -257,11 +1083,11 @@ playa_isla:                // es el procedimiento que dibuja la isla
 
 	sub x2, x2, 1
 	lsl x1, x3, 2
-	sub x0, x0, x1         // nueva direccion
-	sub x0, x0, 2560       // paso a la linea de arriba
-	lsr x8, x7, 1          // x8 = x7 / 2 (mitad de la reducción)
-	lsl x8, x8, 2          // Convertir a bytes (offset)
-	add x0, x0, x8         // Desplaza el inicio solo la mitad
+	sub x0, x0, x1         																// nueva direccion
+	sub x0, x0, 2560       																// paso a la linea de arriba
+	lsr x8, x7, 1          																// x8 = x7 / 2 (mitad de la reducción)
+	lsl x8, x8, 2          																// Convertir a bytes (offset)
+	add x0, x0, x8         																// Desplaza el inicio solo la mitad
 
 	sub x6, x6, 1
 	cmp x6, 0
@@ -272,13 +1098,14 @@ playa_isla:                // es el procedimiento que dibuja la isla
 	// cuando el contador llegue a 0, añade 2 al registro x7 y resetea el valor del contador. Si no, salta directamente a la linea de skip.
 
 	skip:
-	sub x3, x3, x7         // cantidad de pixeles que voy a pintar en la proxima por derecha
+	sub x3, x3, x7         																// cantidad de pixeles que voy a pintar en la proxima por derecha
 
 	cbnz x2, loop8
 
 
-
+//--------------------------------------
 // Tronco de la palmera
+//--------------------------------------
 
 movz x10, 0x4C, lsl 16 
 movk x10, 0x2D17, lsl 0
@@ -290,10 +1117,10 @@ movk x4, 0xA241, lsl 0
 lsl x4, x4, 2
 add x0, x0, x4
 
-mov x2, 57                     // contador y
-mov x3, 10                     // contador X
+mov x2, 81                     															// contador y
+mov x3, 10                     															// contador X
 
-mov x6, 15                     // contador lineas
+mov x6, 15                     															// contador lineas
 mov x7, 0
 
 loop_tronco_palmera:
@@ -304,11 +1131,11 @@ tronco_palmera:
 	add x0, x0, 4
 	sub x1, x1, 1
 	cbnz x1, tronco_palmera
-	sub x2, x2, 1              // contador Y
+	sub x2, x2, 1              															// contador Y
 
-	lsl x1, x3, 2              // cantidad que pinte, en memoria
-	sub x0, x0, x1             // nueva direccion 
-	sub x0, x0, 2560           // paso linea
+	lsl x1, x3, 2              															// cantidad que pinte, en memoria
+	sub x0, x0, x1             															// nueva direccion 
+	sub x0, x0, 2560           															// paso linea
     
 	sub x6, x6, 1
 	cmp x6, 0
@@ -321,10 +1148,11 @@ tronco_palmera:
 	cbnz x2, loop_tronco_palmera
 
 
+//--------------------------------------
 // Cocos
+//--------------------------------------
 
-
-bl draw_coco1                                                               // Llama al procedimiento que dibuja el coco
+bl draw_coco1                                                               			// Llama al procedimiento que dibuja el coco
 
 draw_coco1:
     // Se guardan registros importantes
@@ -335,19 +1163,19 @@ draw_coco1:
     stur x10, [sp, #24]
     stur x21, [sp, #40]
     stur x22, [sp, #48]
-    stur x30, [sp, #56]                                                     // Guardar dirección de retorno
+    stur x30, [sp, #56]                                                     			// Guardar dirección de retorno
 
     // Se configuran los parámetros del coco
-    mov x19, x20                                                            // Base del framebuffer
+    mov x19, x20                                                           				// Base del framebuffer
     movz x10, 0x2d, lsl 16
     movk x10, 0x1304, lsl 00 // 2d1304
     mov x23, x10
 
-    mov x15, #436                                                           // Coordenada X del centro
-    mov x21, #266                                                           // Coordenada Y del centro
-    mov x22, #3                                                             // Radio
+    mov x15, #436                                                           			// Coordenada X del centro
+    mov x21, #266                                                           			// Coordenada Y del centro
+    mov x22, #3                                                             			// Radio
 
-    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+    bl dibujar_circulo_relleno                                              			// Llama al procedimiento que dibuja el circulo
 
     // Ahora se restauran los registros
     ldur x30, [sp, #56]
@@ -361,7 +1189,7 @@ draw_coco1:
 
 
 
-bl draw_coco2                                                               // Llama al procedimiento que dibuja el coco
+bl draw_coco2                                                               			// Llama al procedimiento que dibuja el coco
 
 draw_coco2:
     // Se guardan registros importantes
@@ -372,19 +1200,19 @@ draw_coco2:
     stur x10, [sp, #24]
     stur x21, [sp, #40]
     stur x22, [sp, #48]
-    stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
+    stur x30, [sp, #56]                                                     			// Guarda la dirección de retorno
 
     // Se configuran los parámetros del coco
-    mov x19, x20                                                            // Base del framebuffer
+    mov x19, x20                                                            			// Base del framebuffer
     movz x10, 0x2d, lsl 16
     movk x10, 0x1304, lsl 00
     mov x23, x10
 
-    mov x15, #469                                                           // Coordenada X del centro
-    mov x21, #266                                                           // Coordenada Y del centro
-    mov x22, #3                                                             // Radio
+    mov x15, #469                                                           			// Coordenada X del centro
+    mov x21, #266                                                           			// Coordenada Y del centro
+    mov x22, #3                                                             			// Radio
 
-    bl dibujar_circulo_relleno                                              // Llama al procedimiento que dibuja el circulo
+    bl dibujar_circulo_relleno                                              			// Llama al procedimiento que dibuja el circulo
 
     // Ahora se restauran los registros
     ldur x30, [sp, #56]
@@ -395,6 +1223,7 @@ draw_coco2:
     ldur x1, [sp, #8]
     ldur x0, [sp, #0]
     add sp, sp, #64
+
 
 
 // Nubes
@@ -810,6 +1639,9 @@ draw_sun:
 
 
 
+
+
+
 // ================================================================
 // Subrutinas para dibujar un circulo relleno
 // ================================================================
@@ -842,23 +1674,23 @@ relleno_loop:
     b.gt fin_relleno
 
     // Dibujar líneas horizontales
-    // Línea 1: (cx - y, cy + x) a (cx + y, cy + x)
+    // Línea 1: (cx - y, cy + x) a (cx + y, cy + x) [Se dibujan lineas horizontales desde el centro para abajo]
     sub x7, x15, x5       // x_start = cx - y
     add x8, x15, x5       // x_end = cx + y
     add x9, x21, x4       // y_line = cy + x
     bl dibujar_linea_horizontal_simple
 
-    // Línea 2: (cx - y, cy - x) a (cx + y, cy - x)
+    // Línea 2: (cx - y, cy - x) a (cx + y, cy - x) [Se dibujan lineas horizontales desde el centro para arriba]
     sub x9, x21, x4       // y_line = cy - x
     bl dibujar_linea_horizontal_simple
 
-    // Línea 3: (cx - x, cy + y) a (cx + x, cy + y)
+    // Línea 3: (cx - x, cy + y) a (cx + x, cy + y) [Se dibujan lineas horizontales desde abajo para arriba]
     sub x7, x15, x4       // x_start = cx - x
     add x8, x15, x4       // x_end = cx + x
     add x9, x21, x5       // y_line = cy + y
     bl dibujar_linea_horizontal_simple
 
-    // Línea 4: (cx - x, cy - y) a (cx + x, cy - y)
+    // Línea 4: (cx - x, cy - y) a (cx + x, cy - y) [Se dibujan lineas horizontales desde arriba para abajo]
     sub x9, x21, x5       // y_line = cy - y
     bl dibujar_linea_horizontal_simple
 
@@ -868,7 +1700,7 @@ relleno_loop:
     // d < 0
     lsl x7, x4, #1        // 2*x
     add x6, x6, x7
-    add x6, x6, #3        // d += 2*x + 3
+    add x6, x6, #3        // d = 2*x + 3
     b relleno_next
 
 relleno_else:              // d >= 0
@@ -892,6 +1724,8 @@ fin_relleno:
     add sp, sp, #48
     ret
 
+
+
 //--------------------------------------------------------------
 // procedimiento que dibuja una linea horizontal
 // Parámetros:
@@ -912,7 +1746,10 @@ dibujar_linea_horizontal_simple:
 1:
     // Calcular dirección base para esta línea
     mov x0, SCREEN_WIDTH
-    madd x1, x9, x0, x7   // offset = y * SCREEN_WIDTH + x_start
+
+    mul x9, x9, x0        // y = y * SCREEN_WIDTH
+    add x1, x9, x7        // offset = y + x_start
+
     lsl x1, x1, #2        // offset *= 4 (bytes per pixel)
     add x1, x19, x1       // dirección actual
     
@@ -930,6 +1767,16 @@ dibujar_linea_horizontal_simple:
     b.lt 2b
     
     ret
+
+
+
+
+
+
+
+
+
+
 
 
 
