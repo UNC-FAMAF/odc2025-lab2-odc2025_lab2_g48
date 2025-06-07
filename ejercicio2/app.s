@@ -49,7 +49,7 @@ draw_hoja_palmera_1:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la hoja
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x1B, lsl 16
     movk x10, 0x5E20, lsl 00
@@ -85,7 +85,7 @@ draw_correccion_cielo_1:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la correccion
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x0F, lsl 16
     movk x10, 0xC4C4, lsl 00
@@ -121,7 +121,7 @@ draw_hoja_palmera_2:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la hoja
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x1B, lsl 16
     movk x10, 0x5E20, lsl 00
@@ -157,7 +157,7 @@ draw_correccion_cielo_2:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la correccion
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x0F, lsl 16
     movk x10, 0xC4C4, lsl 00
@@ -193,7 +193,7 @@ draw_hoja_palmera_3:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la hoja
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x1B, lsl 16
     movk x10, 0x5E20, lsl 00
@@ -228,7 +228,7 @@ draw_hoja_palmera_4:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la hoja
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x1B, lsl 16
     movk x10, 0x5E20, lsl 00
@@ -264,7 +264,7 @@ draw_correccion_cielo_3:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la correccion
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x0F, lsl 16
     movk x10, 0xC4C4, lsl 00
@@ -1298,7 +1298,7 @@ draw_clouds:
     stp x22, x23, [sp, 32]
 
     mov x19, x20                                                                       // Base del framebuffer
-    mov x23, 0xFFFFFFFF                                                                // Color blanco (nubes)
+    mov x23, 0xFFFFFF                                                                // Color blanco (nubes)
 
     // Nube 1
     mov x15, #314                                                                      // Centro X
