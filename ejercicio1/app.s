@@ -49,7 +49,7 @@ draw_hoja_palmera_1:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la hoja
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x1B, lsl 16
     movk x10, 0x5E20, lsl 00
@@ -85,7 +85,7 @@ draw_correccion_cielo_1:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la correccion
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x0F, lsl 16
     movk x10, 0xC4C4, lsl 00
@@ -121,7 +121,7 @@ draw_hoja_palmera_2:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la hoja
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x1B, lsl 16
     movk x10, 0x5E20, lsl 00
@@ -157,7 +157,7 @@ draw_correccion_cielo_2:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la correccion
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x0F, lsl 16
     movk x10, 0xC4C4, lsl 00
@@ -193,7 +193,7 @@ draw_hoja_palmera_3:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la hoja
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x1B, lsl 16
     movk x10, 0x5E20, lsl 00
@@ -228,7 +228,7 @@ draw_hoja_palmera_4:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la hoja
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x1B, lsl 16
     movk x10, 0x5E20, lsl 00
@@ -264,7 +264,7 @@ draw_correccion_cielo_3:
     stur x22, [sp, #48]
     stur x30, [sp, #56]                                                     // Guarda la dirección de retorno
 
-    // Se configuran los parámetros del sol
+    // Se configuran los parámetros de la correccion
     mov x19, x20                                                            // Base del framebuffer
     movz x10, 0x0F, lsl 16
     movk x10, 0xC4C4, lsl 00
@@ -1224,9 +1224,9 @@ draw_coco2:
     ldur x0, [sp, #0]
     add sp, sp, #64
 
-
-
+//--------------------------------------
 // Nubes
+//--------------------------------------
 
 bl draw_nube_1                                                              // Llama al procedimiento que dibuja un pedazo de la nube
 
@@ -1300,7 +1300,6 @@ draw_nube_2:
     add sp, sp, #64
 
 
-
 bl draw_nube_3                                                              // Llama al procedimiento que dibuja un pedazo de la nube
 
 draw_nube_3:
@@ -1335,7 +1334,6 @@ draw_nube_3:
     ldur x1, [sp, #8]
     ldur x0, [sp, #0]
     add sp, sp, #64
-
 
 
 bl draw_nube_4                                                              // Llama al procedimiento que dibuja un pedazo de la nube
@@ -1374,7 +1372,6 @@ draw_nube_4:
     add sp, sp, #64
 
 
-
 bl draw_nube_5                                                              // Llama al procedimiento que dibuja un pedazo de la nube
 
 draw_nube_5:
@@ -1409,7 +1406,6 @@ draw_nube_5:
     ldur x1, [sp, #8]
     ldur x0, [sp, #0]
     add sp, sp, #64
-
 
 
 bl draw_nube_6                                                              // Llama al procedimiento que dibuja un pedazo de la nube
@@ -1448,8 +1444,6 @@ draw_nube_6:
     add sp, sp, #64
 
 
-
-
 bl draw_nube_7                                                              // Llama al procedimiento que dibuja un pedazo de la nube
 
 draw_nube_7:
@@ -1484,7 +1478,6 @@ draw_nube_7:
     ldur x1, [sp, #8]
     ldur x0, [sp, #0]
     add sp, sp, #64
-
 
 
 bl draw_nube_8                                                              // Llama al procedimiento que dibuja un pedazo de la nube
@@ -1523,7 +1516,6 @@ draw_nube_8:
     add sp, sp, #64
 
 
-
 bl draw_nube_9                                                              // Llama al procedimiento que dibuja un pedazo de la nube
 
 draw_nube_9:
@@ -1558,8 +1550,6 @@ draw_nube_9:
     ldur x1, [sp, #8]
     ldur x0, [sp, #0]
     add sp, sp, #64
-
-
 
 
 bl draw_nube_10                                                              // Llama al procedimiento que dibuja un pedazo de la nube
@@ -1597,10 +1587,9 @@ draw_nube_10:
     ldur x0, [sp, #0]
     add sp, sp, #64
 
-
-
+//--------------------------------------
 // Sol
-
+//--------------------------------------
 
 bl draw_sun                                                                 // Llama al procedimiento que dibuja el coco
 
@@ -1636,10 +1625,6 @@ draw_sun:
     ldur x1, [sp, #8]
     ldur x0, [sp, #0]
     add sp, sp, #64
-
-
-
-
 
 
 // ================================================================
@@ -1725,7 +1710,6 @@ fin_relleno:
     ret
 
 
-
 //--------------------------------------------------------------
 // procedimiento que dibuja una linea horizontal
 // Parámetros:
@@ -1767,16 +1751,6 @@ dibujar_linea_horizontal_simple:
     b.lt 2b
     
     ret
-
-
-
-
-
-
-
-
-
-
 
 
 
