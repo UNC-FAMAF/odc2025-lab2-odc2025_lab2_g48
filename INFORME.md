@@ -11,4 +11,4 @@ Descripción ejercicio 1: Realizamos un barquito en el océano, con una isla de 
 Descripción ejercicio 2: Basandonos en la imagen del ejercicio 1, la animación es del sol moviéndose de forma horizontal infinitamente.
 
 
-Justificación instrucciones ARMv8:
+Justificación instrucciones ARMv8: No utilizamos ninguna instruccion que no esté presente en LEGV8.
